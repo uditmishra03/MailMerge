@@ -7,7 +7,6 @@ guests = []
 # for each name in invited_names.txt
 for each in invitees:
     guests.append(each.replace("\n", ""))
-print(guests)
 
 # Replace the [name] placeholder with the actual name.
 # Save the letters in the folder "ReadyToSend".
