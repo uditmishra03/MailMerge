@@ -1,12 +1,7 @@
 # TODO: Create a letter using starting_letter.txt
-
+PLACEHOLDER = "[name]"
 with open("./Input/Names/invited_names.txt") as data:
     invitees = data.readlines()
-guests = []
-
-# for each name in invited_names.txt
-for each in invitees:
-    guests.append(each.replace("\n", ""))
 
 # Replace the [name] placeholder with the actual name.
 # Save the letters in the folder "ReadyToSend".
@@ -14,9 +9,10 @@ for each in invitees:
 # Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
 # Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
 
-for each_name in guests:
-    with open("./Input/Letters/starting_letter.txt", mode="r") as data:
+for each_name in invitees:
+    with open("./Input/Letters/starting_letter.txt") as data:
         letter = data.read()
-    letter = letter.replace('[name]', each_name)
-    with open(f"./Output/ReadyToSend/letter_for_{each_name}.txt", mode="w") as data:
+    stripped_name = each_name.strip()
+    letter = letter.replace(PLACEHOLDER, stripped_name)
+    with open(f"./Output/ReadyToSend/letter_for_{stripped_name}.txt", mode="w") as data:
         data.write(letter)
